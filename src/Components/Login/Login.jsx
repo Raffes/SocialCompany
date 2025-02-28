@@ -10,7 +10,7 @@ import { UserContext } from "../../UserContext";
 const Login = () => {
   const { login } = React.useContext(UserContext);
 
-  if (!login) {
+  if (login === false) {
     return (
       <section className={styles.login}>
         <div className={styles.forms}>
@@ -23,8 +23,11 @@ const Login = () => {
         </div>
       </section>
     );
-  } else {
+  } else if (login === true) {
     return <Navigate to="/conta" />;
+  } 
+  else {
+    return <></>;
   }
 };
 
