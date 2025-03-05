@@ -6,15 +6,18 @@ import { UserContext } from "../../UserContext";
 import PhotoDelete from "./PhotoDelete";
 import Image from "../Helper/Image";
 
-const PhotoContent = ({ data, onClose }) => {
+const PhotoContent = ({ data, single, onClose }) => {
   const { photo, comments } = data;
   const user = React.useContext(UserContext);
 
   return (
-    <div className={styles.photo}>
-      <button className={styles.closeModal} title="Fechar foto" onClick={onClose}>
-        &#10006;
-      </button>
+    <div className={`${styles.photo} ${single ? styles.single : ''}`}>
+      {onClose && (
+        <button className={styles.closeModal} title="Fechar foto" onClick={onClose}>
+          &#10006;
+        </button>
+      )}
+      
       <div className={styles.img}>
         <Image src={photo.src} alt={photo.title} />
       </div>
@@ -38,7 +41,7 @@ const PhotoContent = ({ data, onClose }) => {
           </ul>
         </div>
       </div>
-      <PhotoComments id={photo.id} comments={comments} />
+      <PhotoComments id={photo.id} single={single} comments={comments} />
     </div>
   );
 };
