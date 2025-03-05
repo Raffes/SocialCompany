@@ -3,7 +3,7 @@ import Feed from './Feed/Feed'
 
 const Home = () => {
   return (
-    <section className='container mt-4rem'>
+    <section className='container mt-2rem'>
       <Feed />
     </section>
   )
