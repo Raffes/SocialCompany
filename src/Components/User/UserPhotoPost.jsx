@@ -7,6 +7,7 @@ import useFetch from "../../Hooks/useFetch";
 import { PHOTO_POST } from "../../api";
 import Error from "../Helper/Error";
 import { useNavigate } from "react-router-dom";
+import Head from "../Helper/Head";
 
 const UserPhotoPost = () => {
   const nome = useForm();
@@ -37,44 +38,47 @@ const UserPhotoPost = () => {
   }
 
   React.useEffect(() => {
-    data && navigate('/conta');
+    data && navigate("/conta");
   }, [data, navigate]);
 
   return (
-    <section className={`${styles.photoPost} animeLeft`}>
-      <form onSubmit={handleCreatePost}>
-        <Input label="Nome" type="text" {...nome} />
+    <>
+      <Head title="Criar Post" />
+      <section className={`${styles.photoPost} animeLeft`}>
+        <form onSubmit={handleCreatePost}>
+          <Input label="Nome" type="text" {...nome} />
 
-        <Input label="Peso" type="number" {...peso} />
+          <Input label="Peso" type="number" {...peso} />
 
-        <Input label="Idade" type="number" {...idade} />
+          <Input label="Idade" type="number" {...idade} />
 
-        <input
-          className={styles.file}
-          type="file"
-          name="img"
-          id="img"
-          onChange={handleUploadImg}
-        />
+          <input
+            className={styles.file}
+            type="file"
+            name="img"
+            id="img"
+            onChange={handleUploadImg}
+          />
 
-        {loading ? (
-          <Button label="Enviando..." disabled />
-        ) : (
-          <Button label="Enviar" />
-        )}
+          {loading ? (
+            <Button label="Enviando..." disabled />
+          ) : (
+            <Button label="Enviar" />
+          )}
 
-        <Error error={error} />
-      </form>
+          <Error error={error} />
+        </form>
 
-      <div>
-        {img.preview && (
-          <div
-            className={styles.preview}
-            style={{ backgroundImage: `url('${img.preview}')` }}
-          ></div>
-        )}
-      </div>
-    </section>
+        <div>
+          {img.preview && (
+            <div
+              className={styles.preview}
+              style={{ backgroundImage: `url('${img.preview}')` }}
+            ></div>
+          )}
+        </div>
+      </section>
+    </>
   );
 };
 
