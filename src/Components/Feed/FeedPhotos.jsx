@@ -22,7 +22,7 @@ const FeedPhotos = ({ page = 1, user, setModalPhoto, setInfinite }) => {
 
   if (error) return <Error error={error} />;
   if (loading) return <Loading />;
-  if (data)
+  if (data && data.length)
     return (
       <ul className={`${styles.feed} animeLeft`}>
         {data.map((photo) => (
@@ -34,7 +34,7 @@ const FeedPhotos = ({ page = 1, user, setModalPhoto, setInfinite }) => {
         ))}
       </ul>
     );
-  else return null;
+  else return data && !data.length ? 'Nenhuma postagem encontrada' : null;
 };
 
 export default FeedPhotos;
