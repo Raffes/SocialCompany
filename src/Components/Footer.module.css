@@ -1,0 +1,11 @@
+.footer {
+    background: var(--primary);
+    padding: 3rem 1rem 0 1rem;
+    height: 10rem;
+    text-align: center;
+    color: var(--tertiary);
+}
+
+.footer p {
+    margin-top: 1rem;
+}
