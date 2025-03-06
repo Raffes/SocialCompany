@@ -23,7 +23,7 @@ Para iniciar o servidor de desenvolvimento, execute:
 npm run dev
 ```
 
-Acesse a url http://localhost:5174/ para visualizar o projeto localmente no navegador.
+Depois, acesse a url http://localhost:5174/ para visualizar o projeto localmente no navegador.
 
 ## Tecnologias Utilizadas
 - React
