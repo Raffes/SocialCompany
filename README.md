@@ -1,8 +1,32 @@
-# React + Vite
+# Social Company
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Social Company é uma rede social corporativa desenvolvida com React e Vite.
 
-Currently, two official plugins are available:
+## Índice
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Instalação](#instalação)
+- [Uso](#uso)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+
+## Instalação
+
+Para instalar as dependências do projeto, execute:
+
+```sh
+npm install
+```
+
+## Uso
+
+Para iniciar o servidor de desenvolvimento, execute:
+```sh
+npm run dev
+```
+
+Acesse a url http://localhost:5174/ para visualizar o projeto localmente no navegador.
+
+## Tecnologias Utilizadas
+- React
+- Vite
+- JavaScript
+- CSS
