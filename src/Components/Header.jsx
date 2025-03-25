@@ -17,7 +17,7 @@ const Header = () => {
         { login === true &&
           <>
             <Link className={styles.login} to="/conta">
-              {data.nome}
+              {data.username}
             </Link>
           </>
         }
