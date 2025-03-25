@@ -12,7 +12,7 @@ const UserStats = () => {
   
   React.useEffect(() => {
     async function getData() {
-      const token = window.localStorage.getItem("token");
+      const { token } = window.localStorage.getItem("user");
       const { url, options } = GET_STATS(token);
       await request(url, options);
     }

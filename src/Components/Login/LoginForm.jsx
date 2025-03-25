@@ -10,15 +10,15 @@ import Error from "../Helper/Error";
 import Head from "../Helper/Head";
 
 const LoginForm = () => {
-  const username = useForm();
+  const email = useForm();
   const password = useForm();
 
   const { userLogin, error, loading } = React.useContext(UserContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if (username.validate() && password.validate()) {
-      userLogin(username.value, password.value);
+    if (email.validate() && password.validate()) {
+      userLogin(email.value, password.value);
     }
   }
 
@@ -27,7 +27,7 @@ const LoginForm = () => {
       <Head title="Login" />
       <h1 className="title">Login</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <Input label="Usuário" type="text" {...username} />
+        <Input label="Email" type="email" {...email} />
 
         <Input label="Senha" type="password" {...password} />
 

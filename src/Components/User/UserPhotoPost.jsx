@@ -10,9 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Head from "../Helper/Head";
 
 const UserPhotoPost = () => {
-  const nome = useForm();
-  const peso = useForm("number");
-  const idade = useForm("number");
+  const descricao = useForm();
   const [img, setImg] = React.useState({});
   const { data, error, loading, request } = useFetch();
   const navigate = useNavigate();
@@ -20,12 +18,10 @@ const UserPhotoPost = () => {
   function handleCreatePost(event) {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("nome", nome.value);
-    formData.append("peso", peso.value);
-    formData.append("idade", idade.value);
-    formData.append("img", img.raw);
+    formData.append("description", descricao.value);
+    formData.append("imageFile", img.raw);
 
-    const token = window.localStorage.getItem("token");
+    const { token } = JSON.parse(window.localStorage.getItem("user"));
     const { url, options } = PHOTO_POST(token, formData);
     request(url, options);
   }
@@ -46,11 +42,8 @@ const UserPhotoPost = () => {
       <Head title="Criar Post" />
       <section className={`${styles.photoPost} animeLeft`}>
         <form onSubmit={handleCreatePost}>
-          <Input label="Nome" type="text" {...nome} />
 
-          <Input label="Peso" type="number" {...peso} />
-
-          <Input label="Idade" type="number" {...idade} />
+          <Input label="Descrição" type="text" {...descricao} />
 
           <input
             className={styles.file}
