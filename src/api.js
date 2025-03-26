@@ -75,9 +75,9 @@ export function PHOTO_POST(token, formData) {
     }
 }
 
-export function PHOTOS_GET({total, user}) {
+export function PHOTOS_GET({total, user, lastPostId}) {
     return {
-        url: `${API_URL}/api/listPostsById/?user=${user}&page_size=${total}`,
+        url: `${API_URL}/api/listPostsById/?user=${user}&lastDocId=${lastPostId}&page_size=${total}`,
         options: {
             method: 'GET',
             cache:'no-store'

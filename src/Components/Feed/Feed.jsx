@@ -7,15 +7,18 @@ const Feed = ({ user }) => {
   const [modalPhoto, setModalPhoto] = React.useState(null);
   const [pages, setPages] = React.useState([1]);
   const [infinite, setInfinite] = React.useState(true);
+  const [lastPostId, setLastPostId] = React.useState(null);
+  const prevLastPostId = React.useRef(lastPostId);
 
   React.useEffect(() => {
     let wait = false;
 
     function infiniteScrool() {
-      if(infinite) {
+      if(infinite && prevLastPostId.current != lastPostId) {
         const scroll = window.scrollY;
         const height = document.body.offsetHeight - window.innerHeight;
         if(scroll > height * 0.75 && !wait) {
+          prevLastPostId.current = lastPostId;
           setPages((pages) => [...pages, pages.length + 1]);
           wait = true;
           setTimeout(() => {
@@ -33,7 +36,7 @@ const Feed = ({ user }) => {
       window.removeEventListener("wheel", infiniteScrool);
       window.removeEventListener("scroll", infiniteScrool);
     };
-  }, [infinite]);
+  }, [infinite, lastPostId]);
 
   return (
     <div>
@@ -43,10 +46,11 @@ const Feed = ({ user }) => {
       {pages.map((page) => (
         <FeedPhotos
           key={page}
-          page={page}
+          lastPostId={lastPostId}
           user={user}
           setModalPhoto={setModalPhoto}
           setInfinite={setInfinite}
+          setLastPostId={setLastPostId}
         />
       ))}
     </div>

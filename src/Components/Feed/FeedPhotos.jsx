@@ -6,15 +6,16 @@ import { PHOTOS_GET } from "../../api";
 import Error from "../Helper/Error";
 import Loading from "../Helper/Loading";
 
-const FeedPhotos = ({ user, setModalPhoto, setInfinite }) => {
+const FeedPhotos = ({ lastPostId, user, setModalPhoto, setInfinite, setLastPostId }) => {
   const { data, error, loading, request } = useFetch();
 
   React.useEffect(() => {
     async function fetchPhotos() {
       const total = 6;
-      const { url, options } = PHOTOS_GET({ total, user });
+      const { url, options } = PHOTOS_GET({ total, user, lastPostId });
       const { response, json } = await request(url, options);
-      if(response && response.ok && json.count < total) setInfinite(false)
+      setLastPostId(json.lastDocId);
+      if(response && response.ok && json.posts.length < total) setInfinite(false)
     }
     fetchPhotos();
   }, [request, user, setInfinite]);
