@@ -106,12 +106,12 @@ export function PHOTO_GET(id) {
 
 export function COMMENT_POST(id, token, body) {
     return {
-        url: `${API_URL}/api/comment/${id}`,
+        url: `${API_URL}/api/createComment/?id=${id}`,
         options: {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + token
+                Authorization: token
             },
             body: JSON.stringify(body),
         }

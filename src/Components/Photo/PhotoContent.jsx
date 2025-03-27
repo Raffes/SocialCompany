@@ -7,8 +7,8 @@ import PhotoDelete from "./PhotoDelete";
 import Image from "../Helper/Image";
 
 const PhotoContent = ({ data, single, onClose }) => {
-  const photo = data;
-  // const { photo, comments } = data;
+  const photo = data.posts;
+  const comments = data.comments;
   const user = React.useContext(UserContext);
 
   return (
@@ -42,7 +42,7 @@ const PhotoContent = ({ data, single, onClose }) => {
           </ul> */}
         </div>
       </div>
-      {/* <PhotoComments id={photo.id} single={single} comments={comments} /> */}
+      <PhotoComments id={photo.id} single={single} comments={comments} />
     </div>
   );
 };
