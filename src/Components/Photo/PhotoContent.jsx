@@ -7,7 +7,8 @@ import PhotoDelete from "./PhotoDelete";
 import Image from "../Helper/Image";
 
 const PhotoContent = ({ data, single, onClose }) => {
-  const { photo, comments } = data;
+  const photo = data;
+  // const { photo, comments } = data;
   const user = React.useContext(UserContext);
 
   return (
@@ -19,7 +20,7 @@ const PhotoContent = ({ data, single, onClose }) => {
       )}
       
       <div className={styles.img}>
-        <Image src={photo.src} alt={photo.title} />
+        <Image src={photo.imageUrl} alt={"Imagem"} />
       </div>
       <div className={styles.details}>
         <div>
@@ -33,15 +34,15 @@ const PhotoContent = ({ data, single, onClose }) => {
             <span className={styles.views}>{photo.acessos}</span>
           </p>
           <h1 className="title">
-            <Link to={`/foto/${photo.id}`}>{photo.title}</Link>
+            <Link to={`/foto/${photo.id}`}>{"Imagem"}</Link>
           </h1>
-          <ul className={styles.attributes}>
+          {/* <ul className={styles.attributes}>
             <li>{photo.peso} kg</li>
             <li>{photo.idade} anos</li>
-          </ul>
+          </ul> */}
         </div>
       </div>
-      <PhotoComments id={photo.id} single={single} comments={comments} />
+      {/* <PhotoComments id={photo.id} single={single} comments={comments} /> */}
     </div>
   );
 };

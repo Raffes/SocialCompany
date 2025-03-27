@@ -62,6 +62,15 @@ export function USER_POST(body) {
     }
 }
 
+export function ACCESSES_PHOTO_UPDATE(user, postId) {
+    return {
+        url: `${API_URL}/api/updateAccessesPost/?user=${user}&postId=${postId}`,
+        options: {
+            method: 'PATCH',
+        }
+    }
+}
+
 export function PHOTO_POST(token, formData) {
     return {
         url: API_URL + '/api/createPost',
