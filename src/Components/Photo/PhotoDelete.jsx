@@ -9,7 +9,7 @@ const PhotoDelete = ({ id }) => {
   async function handleDeletePhoto() {
     const confirm = window.confirm("Tem certeza de que deseja deletar a foto?");
     if (confirm) {
-      const { token } = window.localStorage.getItem("user");
+      const { token } = JSON.parse(window.localStorage.getItem("user"));
       const { url, options } = PHOTO_DELETE(id, token);
       const { response } = await request(url, options);
       if (response.ok) {

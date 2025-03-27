@@ -20,7 +20,7 @@ const PhotoContent = ({ data, single, onClose }) => {
       )}
       
       <div className={styles.img}>
-        <Image src={photo.imageUrl} alt={"Imagem"} />
+        <Image src={photo.imageInfo.src} alt={"Imagem"} />
       </div>
       <div className={styles.details}>
         <div>

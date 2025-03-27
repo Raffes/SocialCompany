@@ -120,11 +120,11 @@ export function COMMENT_POST(id, token, body) {
 
 export function PHOTO_DELETE(id, token) {
     return {
-        url: `${API_URL}/api/photo/${id}`,
+        url: `${API_URL}/api/deletePost/?id=${id}`,
         options: {
             method: 'DELETE',
             headers: {
-                Authorization: 'Bearer ' + token
+                Authorization: token
             }
         }
     }
