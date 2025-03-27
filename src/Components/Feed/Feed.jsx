@@ -38,6 +38,14 @@ const Feed = ({ user }) => {
     };
   }, [infinite, lastPostId]);
 
+  React.useEffect(() => {
+    if(modalPhoto) {
+      const post = document.getElementById(modalPhoto.id);
+      const tagAcessos = post.querySelector("span");
+      tagAcessos.textContent = Number(tagAcessos.textContent) + 1;
+    }
+  }, [modalPhoto])
+
   return (
     <div>
       {modalPhoto && (
